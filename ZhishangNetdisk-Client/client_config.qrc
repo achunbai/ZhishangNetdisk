@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/config">
+        <file>client.config</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>file-fill.svg</file>
+        <file>file-pdf-fill.svg</file>
+        <file>file-text-fill.svg</file>
+        <file>file-video-fill.svg</file>
+        <file>folder-6-fill.svg</file>
+        <file>music-fill.svg</file>
+        <file>file-image-fill.svg</file>
+        <file>file-unknow-fill.svg</file>
+    </qresource>
+</RCC>

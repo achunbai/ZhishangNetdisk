@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Files</class>
+ <widget class="QWidget" name="Files">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>713</width>
+    <height>399</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <widget class="QLabel" name="FileListLabel">
+         <property name="font">
+          <font>
+           <family>Academy Engraved LET</family>
+           <pointsize>24</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>**您** 的文件</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::MarkdownText</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QListWidget" name="FileListLW"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+          <widget class="QLabel" name="ActionLabel">
+           <property name="font">
+            <font>
+             <family>Academy Engraved LET</family>
+             <pointsize>24</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>操作</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="RefreshPB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>刷新</string>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+             <property name="default">
+              <bool>false</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="DownloadPB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>下载文件</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="NewFolderPB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>新建文件夹</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="UploadPB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>上传文件</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="DeleteFolderPB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>删除文件夹</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QPushButton" name="DeleteFilePB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>删除文件</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QPushButton" name="SharePB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>分享</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QPushButton" name="MovePB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>移动</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QPushButton" name="ReturnPB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>返回上一级</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QPushButton" name="RenamePB">
+             <property name="font">
+              <font>
+               <family>Academy Engraved LET</family>
+               <pointsize>24</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>重命名</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>288</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
