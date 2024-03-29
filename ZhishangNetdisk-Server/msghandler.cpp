@@ -22,7 +22,7 @@ PDU *MsgHandler::ProcessRegisterRequest(const PDU *rPDU)
     {
         qDebug() << "MSG_TYPE_REGISTER_REQUEST";
         // 处理注册
-        char UserName[24] = { 0 }, Password[32] = { 0 };
+        char UserName[25] = { 0 }, Password[33] = { 0 };
         memcpy(UserName, rPDU->ParaData, 24);
         memcpy(Password, rPDU->ParaData + 24, 32);
 
@@ -58,7 +58,7 @@ PDU *MsgHandler::ProcessLoginRequest(const PDU *rPDU, QString& CurrentUserName, 
     {
         qDebug() << "MSG_TYPE_LOGIN_REQUEST";
         // 处理登录
-        char UserName[24] = { 0 }, Password[32] = { 0 };
+        char UserName[25] = { 0 }, Password[33] = { 0 };
         memcpy(UserName, rPDU->ParaData, 24);
         memcpy(Password, rPDU->ParaData + 24, 32);
 
@@ -91,7 +91,7 @@ PDU *MsgHandler::ProcessSearchUserRequest(const PDU *rPDU)
     {
         qDebug() << "MSG_TYPE_SEARCH_USER_REQUEST";
         // 处理查询
-        char UserName[24] = { 0 };
+        char UserName[25] = { 0 };
         memcpy(UserName, rPDU->ParaData, 24);
 
         // 调用函数返回搜索结果
@@ -135,8 +135,8 @@ PDU *MsgHandler::ProcessAddFriendRequest(PDU *rPDU)
     {
         qDebug() << "MSG_TYPE_ADD_FRIEND_REQUEST";
         // 获取两个用户名
-        char CurrentUserName[24] = { 0 };
-        char TargetUserName[24] = { 0 };
+        char CurrentUserName[25] = { 0 };
+        char TargetUserName[25] = { 0 };
         memcpy(CurrentUserName, rPDU->ParaData, 24);
         memcpy(TargetUserName, rPDU->ParaData + 24, 24);
 
@@ -169,8 +169,8 @@ PDU *MsgHandler::ProcessAddFriendRespond(const PDU *rPDU)
     {
         qDebug() << "MSG_TYPE_ADD_FRIEND_RESPOND";
         // 获取两个用户名
-        char CurrentUserName[24] = { 0 };
-        char TargetUserName[24] = { 0 };
+        char CurrentUserName[25] = { 0 };
+        char TargetUserName[25] = { 0 };
         memcpy(CurrentUserName, rPDU->ParaData, 24);
         memcpy(TargetUserName, rPDU->ParaData + 24, 24);
         // 获取是否同意
@@ -225,7 +225,7 @@ PDU *MsgHandler::ProcessRefreshFriendListRequest(const PDU *rPDU)
     {
         qDebug() << "MSG_TYPE_REFRESH_FRIEND_LIST_RESPOND";
         // 获取要查询的用户名
-        char UserName[24] = { 0 };
+        char UserName[25] = { 0 };
         memcpy(UserName, rPDU->ParaData, 24);
         // 执行数据库查询
         bool status;
@@ -253,7 +253,7 @@ PDU *MsgHandler::ProcessDeleteFriendRequest(const PDU *rPDU)
 {
     if(rPDU == NULL)
         return NULL;
-    char CurrentUserName[24] = { 0 }, TargetUserName[24] = { 0 };
+    char CurrentUserName[25] = { 0 }, TargetUserName[25] = { 0 };
     memcpy(CurrentUserName, rPDU->ParaData, 24);
     memcpy(TargetUserName, rPDU->ParaData + 24, 24);
 
@@ -308,7 +308,7 @@ PDU *MsgHandler::ProcessChat(PDU *rPDU)
     if(rPDU == NULL)
         return NULL;
     // 读取目标用户
-    char TargetUserName[24];
+    char TargetUserName[25];
     memcpy(TargetUserName, rPDU->ParaData + 24, 24);
     // 调用转发函数
     ZhishangTcpServer::GetInstance().ForwardPDU(rPDU, TargetUserName);
@@ -832,7 +832,7 @@ PDU *MsgHandler::ProcessShareFileRequest(const PDU *rPDU, const QString &Current
         return NULL;
     qDebug() << "MSG_TYPE_SHARE_FILE_REQUEST";
 
-    char CurrentUserName[24];
+    char CurrentUserName[25];
     int PathLen, NameLen, FriendsSize;
 
     // 获取基本信息
@@ -868,7 +868,7 @@ PDU *MsgHandler::ProcessShareFileRequest(const PDU *rPDU, const QString &Current
 
     for(int i = 0; i < FriendsLen; i++)
     {
-        char FriendName[24];
+        char FriendName[25];
         memcpy(FriendName, rPDU->Msg + i * 24, 24);
         qDebug() << "FriendName = " << FriendName;
         if(!ZhishangTcpServer::GetInstance().ForwardPDU(fPDU, FriendName, SourceFilePath))

@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "altmainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
@@ -41,15 +40,3 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-void MainWindow::on_pushButton_clicked()
-{
-    AltMainWindow::GetInstance().show();
-}
-
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    AltMainWindow::GetInstance().hide();
-}
-

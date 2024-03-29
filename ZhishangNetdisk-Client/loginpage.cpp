@@ -424,9 +424,11 @@ void LoginPage::on_RegisterPB_clicked()
     QByteArray PasswordRaw = Password.toUtf8();
     QByteArray HashedPassword = QCryptographicHash::hash(PasswordRaw, QCryptographicHash::Sha256);
 
-    qDebug() << "用户名：" << UserName
-             << " 密码：" << HashedPassword.data();
+    // 将哈希值转换为Base64编码，并只取前32字符
+    QString HashedPasswordBase64 = HashedPassword.toBase64().left(32);
 
+    qDebug() << "用户名：" << UserName
+             << " 密码：" << HashedPasswordBase64;
     // 用户名密码判空
     if(UserName.isEmpty() && Password.isEmpty())
     {
@@ -464,7 +466,7 @@ void LoginPage::on_RegisterPB_clicked()
     // toStdString将QString对象转换为std::String，方便使用C++标准库
     // c_str是C++标准库中std::string类的一个成员函数。它的作用是返回一个指向正规C字符串的指针，常用在将std::string转换为C字符串。
     memcpy(sPDU->ParaData, UserName.toStdString().c_str(), 24);
-    memcpy(sPDU->ParaData + 24, Password.toStdString().c_str(), 32);
+    memcpy(sPDU->ParaData + 24, HashedPasswordBase64.toStdString().c_str(), 32);
     qDebug() << "MsgType：" << sPDU->MsgType
              << " ParaData1：" << sPDU->ParaData
              << " ParaData2：" << sPDU->ParaData + 24;
@@ -482,8 +484,16 @@ void LoginPage::on_LoginPB_clicked()
     // QString UserName = ui->UserNameLE->text();
     CurrentUser = ui->UserNameLE->text();
     QString Password = ui->PasswordLE->text();
+
+    // 将密码使用sha-256加密
+    QByteArray PasswordRaw = Password.toUtf8();
+    QByteArray HashedPassword = QCryptographicHash::hash(PasswordRaw, QCryptographicHash::Sha256);
+
+    // 将哈希值转换为Base64编码，并只取前32字符
+    QString HashedPasswordBase64 = HashedPassword.toBase64().left(32);
+
     qDebug() << "用户名：" << CurrentUser
-             << " 密码：" << Password;
+             << " 密码：" << HashedPasswordBase64;
 
     // 用户名密码判空
     if(CurrentUser.isEmpty() && Password.isEmpty())
@@ -522,7 +532,7 @@ void LoginPage::on_LoginPB_clicked()
     // toStdString将QString对象转换为std::String，方便使用C++标准库
     // c_str是C++标准库中std::string类的一个成员函数。它的作用是返回一个指向正规C字符串的指针，常用在将std::string转换为C字符串。
     memcpy(sPDU->ParaData, CurrentUser.toStdString().c_str(), 24);
-    memcpy(sPDU->ParaData + 24, Password.toStdString().c_str(), 32);
+    memcpy(sPDU->ParaData + 24, HashedPasswordBase64.toStdString().c_str(), 32);
     SendPDU(sPDU);
     qDebug() << "发送登录信息成功";
 }

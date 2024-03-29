@@ -60,7 +60,7 @@ void MsgHandler::ProcessSearchUserRespond(const PDU *rPDU)
         return;
     // 服务器传回的respond为int类型，从收到的PDU中读取对应的信息
     int respond;
-    char UserName[24];
+    char UserName[25];
     memcpy(UserName, rPDU->ParaData, sizeof(UserName));
     memcpy((char*)&respond, rPDU->ParaData + 24, sizeof(int));
     if(respond == -1)
@@ -103,7 +103,7 @@ void MsgHandler::ProcessShowOnlieneUserRespond(const PDU *rPDU)
         // 然后使用fromStdSreing将PDU中的在线用户名转换为QString类型对象
         // QString UserName = QString::fromStdString(std::string(rPDU->Msg + i * 24, 24));
         // 上述麻烦的方法可能会导致接收的值存在乱码，搞太花里胡哨容易寄，直接复制更香
-        char UserName[24];
+        char UserName[25];
         // 不添加当前用户
         memcpy(UserName, rPDU->Msg + i * 24, 24);
         if((QString)UserName == LoginPage::GetInstance().GetCurrentUser())
@@ -121,7 +121,7 @@ void MsgHandler::ProcessAddFriendRequest(const PDU *rPDU)
 {
     if(rPDU == NULL)
         return;
-    char UserName[24] = { 0 };
+    char UserName[25] = { 0 };
     memcpy(UserName, rPDU->ParaData, 24);
     int ret = QMessageBox::question((QWidget*)MainWindow::GetInstance().GetFriendsPage(), "添加好友？", QString("您是否需要添加 %1 为好友？").arg(UserName));
     PDU *sPDU = CreatePDU(0);
@@ -167,7 +167,7 @@ void MsgHandler::ProcessAddFriendResult(const PDU *rPDU)
 {
     if(rPDU == NULL)
         return;
-    char UserName[24] = { 0 };
+    char UserName[25] = { 0 };
     memcpy(UserName, rPDU->ParaData + 24, 24);
     int result;
     memcpy(&result, rPDU->ParaData + 48, sizeof(int));
@@ -213,7 +213,7 @@ void MsgHandler::ProcessRefreshFriendListRespond(const PDU *rPDU)
     int cnt = 0;
     for(int i = 0; i < len; i++)
     {
-        char FriendName[24];
+        char FriendName[25];
         int online;
         memcpy(FriendName, rPDU->Msg + i * (24 + sizeof(int)), 24);
         memcpy(&online, rPDU->Msg + i * (24 + sizeof(int)) + 24, sizeof(int));
@@ -234,7 +234,7 @@ void MsgHandler::ProcessDeleteFriendRespond(const PDU *rPDU)
     if(rPDU == NULL)
         return;
     // 读取数据包内容
-    char UserName[24] = { 0 };
+    char UserName[25] = { 0 };
     int status;
     memcpy(UserName, rPDU->ParaData, 24);
     memcpy(&status, rPDU->ParaData + 24, sizeof(int));
@@ -269,7 +269,7 @@ void MsgHandler::ProcessChat(const PDU *rPDU)
     if(rPDU == NULL)
         return;
     // 读取来源用户名
-    char UserName[24];
+    char UserName[25];
     memcpy(UserName, rPDU->ParaData, 24);
     qDebug() << "读取来自" << UserName << "的消息";
     // 读取消息
@@ -523,7 +523,7 @@ void MsgHandler::ProcessShareFileRequest(const PDU *rPDU)
     if(rPDU == NULL)
         return;
 
-    char UserNameRecv[24];
+    char UserNameRecv[25];
     char *FileNameRecv = new char[rPDU->MsgLen]();
     memcpy(UserNameRecv, rPDU->ParaData, 24);
     memcpy(FileNameRecv, rPDU->Msg, rPDU->MsgLen);

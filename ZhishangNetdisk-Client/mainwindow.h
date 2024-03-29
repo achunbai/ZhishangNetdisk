@@ -20,11 +20,6 @@ public:
     void SetTitle(const QString &UserName);
     ~MainWindow();
 
-private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
 private:
     Ui::MainWindow *ui;
     explicit MainWindow(QWidget *parent = nullptr);
